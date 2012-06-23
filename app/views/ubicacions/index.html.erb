@@ -1,0 +1,27 @@
+<h1>ubicaciones</h1>
+
+<table>
+  <tr>
+    <th>Direccion</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ubicacions.each do |ubicacion| %>
+  <tr>
+    <td><%= ubicacion.direccion %></td>
+    <td><%= ubicacion.latitude %></td>
+    <td><%= ubicacion.longitude %></td>
+    <td><%= link_to 'Show', ubicacion %></td>
+    <td><%= link_to 'Edit', edit_ubicacion_path(ubicacion) %></td>
+    <td><%= link_to 'Destroy', ubicacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nueva Ubicacion', new_ubicacion_path %>

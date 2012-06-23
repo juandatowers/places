@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @ubicacion.direccion %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @ubicacion.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @ubicacion.longitude %>
+</p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@ubicacion.latitude}%2C#{@ubicacion.longitude}" %>
+
+<h3>Lugares Cercanos</h3>
+<ul>
+<% for ubicacion in @ubicacion.nearbys(10) %>
+  <li><%= link_to ubicacion.direccion, ubicacion %> (<%= ubicacion.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
+
+<%= link_to 'Editar', edit_ubicacion_path(@ubicacion) %> |
+<%= link_to 'Regresar', ubicacions_path %>
